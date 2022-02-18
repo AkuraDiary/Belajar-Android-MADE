@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         viewModel.setName("Dicoding")
-        viewModel.message.observe(this, Observer {
+        viewModel.message.observe(this) {
             binding.tvWelcome.text = it.welcomeMessage
-        })
+        }
     }
 }

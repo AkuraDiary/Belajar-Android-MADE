@@ -7,16 +7,12 @@ import com.dicoding.tourismapp.core.domain.model.Tourism
 import io.reactivex.Flowable
 
 class TourismInteractor(private val tourismRepository: TourismRepository) :  TourismUseCase{
-    override fun getAllTourism(): Flowable<Resource<List<Tourism>>> {
-        return tourismRepository.getAllTourism()
-    }
+    override fun getAllTourism() = tourismRepository.getAllTourism()
 
-    override fun getFavoriteTourism(): Flowable<List<Tourism>> {
-        return tourismRepository.getFavoriteTourism()
-    }
+    override fun getFavoriteTourism() = tourismRepository.getFavoriteTourism()
 
-    override fun setFavoriteTourism(tourism: Tourism, state: Boolean) {
-        return tourismRepository.setFavoriteTourism(tourism, state)
-    }
+
+    override fun setFavoriteTourism(tourism: Tourism, state: Boolean) = tourismRepository.setFavoriteTourism(tourism, state)
+
 
 }

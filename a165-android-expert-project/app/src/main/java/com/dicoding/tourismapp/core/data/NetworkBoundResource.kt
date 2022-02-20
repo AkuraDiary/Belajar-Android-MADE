@@ -1,14 +1,9 @@
 package com.dicoding.tourismapp.core.data
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiResponse
-
-import com.dicoding.tourismapp.core.utils.AppExecutors
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

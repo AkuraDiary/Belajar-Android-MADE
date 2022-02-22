@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         
         edPlace.addTextChangedListener(object  : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
+
             }
         })
 

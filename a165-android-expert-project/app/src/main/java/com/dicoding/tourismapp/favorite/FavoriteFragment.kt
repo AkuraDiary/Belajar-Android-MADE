@@ -39,7 +39,7 @@ class FavoriteFragment : Fragment() {
                 intent.putExtra(DetailTourismActivity.EXTRA_DATA, selectedData)
                 startActivity(intent)
             }
-            
+
 
             favoriteViewModel.favoriteTourism.observe(viewLifecycleOwner) { dataTourism ->
                 tourismAdapter.setData(dataTourism)

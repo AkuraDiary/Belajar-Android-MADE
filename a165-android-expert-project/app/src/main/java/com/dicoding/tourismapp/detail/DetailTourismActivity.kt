@@ -26,9 +26,6 @@ class DetailTourismActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val factory = ViewModelFactory.getInstance(this)
-        detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
-
         val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
         showDetailTourism(detailTourism)
     }

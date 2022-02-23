@@ -1,4 +1,4 @@
-package com.dicoding
+package com.dicoding.tourismapp
 
 import android.app.Application
 import com.dicoding.tourismapp.core.di.databaseModule

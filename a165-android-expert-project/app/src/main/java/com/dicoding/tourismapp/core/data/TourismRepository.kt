@@ -19,19 +19,7 @@ class TourismRepository(
     private val appExecutors: AppExecutors
 ) : ITourismRepository{
 
-    companion object {
-        @Volatile
-        private var instance: TourismRepository? = null
 
-        fun getInstance(
-            remoteData: RemoteDataSource,
-            localData: LocalDataSource,
-            appExecutors: AppExecutors
-        ): TourismRepository =
-            instance ?: synchronized(this) {
-                instance ?: TourismRepository(remoteData, localData, appExecutors)
-            }
-    }
 
     override fun getAllTourism(): Flow<Resource<List<Tourism>>> =
         object : NetworkBoundResource<List<Tourism>, List<TourismResponse>>() {
@@ -40,7 +28,7 @@ class TourismRepository(
             }
 
             override fun shouldFetch(data: List<Tourism>?): Boolean =
-                data == null || data.isEmpty()
+                true//data == null || data.isEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<TourismResponse>>> =
                 remoteDataSource.getAllTourism()
@@ -48,9 +36,9 @@ class TourismRepository(
             override fun saveCallResult(data: List<TourismResponse>) {
                 val tourismList = DataMapper.mapResponsesToEntities(data)
                 localDataSource.insertTourism(tourismList)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
+                    //.subscribeOn(Schedulers.io())
+                    //.observeOn(AndroidSchedulers.mainThread())
+                    //.subscribe()
             }
         }.asFlow()
 

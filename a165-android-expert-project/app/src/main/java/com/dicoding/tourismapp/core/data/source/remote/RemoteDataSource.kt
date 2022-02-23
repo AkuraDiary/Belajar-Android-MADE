@@ -1,6 +1,5 @@
 package com.dicoding.tourismapp.core.data.source.remote
 
-import android.annotation.SuppressLint
 import android.util.Log
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiResponse
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiService

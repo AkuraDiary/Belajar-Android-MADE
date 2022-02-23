@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
             }
 
 
-            homeViewModel.tourism.observe(viewLifecycleOwner, { tourism ->
+            homeViewModel.tourism.observe(viewLifecycleOwner) { tourism ->
                 if (tourism != null) {
                     when (tourism) {
                         is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
-            })
+            }
 
             with(binding.rvTourism) {
                 layoutManager = LinearLayoutManager(context)

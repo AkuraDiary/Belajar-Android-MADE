@@ -1,5 +1,6 @@
 package com.dicoding.mysimplelogin
 
+import android.util.Log
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,4 +18,6 @@ class UserRepository @Inject constructor(private val sesi: SessionManager) {
     fun isUserLogin() = sesi.isLogin
 
     fun logoutUser() = sesi.logout()
+
+    fun checkInstance() = Log.d("Singleton", "checkInstance: $this")
 }

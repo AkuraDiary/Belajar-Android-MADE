@@ -1,10 +1,10 @@
 package com.example.myreactivesearch.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import com.example.myreactivesearch.network.ApiConfig
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
@@ -26,5 +26,4 @@ class MainViewModel : ViewModel() {
             ApiConfig.provideApiService().getCountry(it, accessToken).features
         }
         .asLiveData()
-
 }

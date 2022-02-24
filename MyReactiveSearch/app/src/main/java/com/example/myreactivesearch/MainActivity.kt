@@ -1,34 +1,38 @@
 package com.example.myreactivesearch
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.example.myreactivesearch.databinding.ActivityMainBinding
 import com.example.myreactivesearch.viewmodel.MainViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
+
     val viewModel : MainViewModel by viewModels()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        val _edPlace = binding.edPlace
-        
-        _edPlace.addTextChangedListener(object  : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        val edPlace = findViewById<AutoCompleteTextView>(R.id.ed_place)
 
+        edPlace.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -36,22 +40,17 @@ class MainActivity : AppCompatActivity() {
                     viewModel.queryChannel.send(s.toString())
                 }
             }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
         })
 
         viewModel.searchResult.observe(this) { placesItem ->
             val placesName = arrayListOf<String?>()
-
             placesItem.map {
                 placesName.add(it.placeName)
             }
-
-            val adapter = ArrayAdapter(this@MainActivity, android.R.layout.select_dialog_item, placesName)
+            val adapter =
+                ArrayAdapter(this@MainActivity, android.R.layout.select_dialog_item, placesName)
             adapter.notifyDataSetChanged()
-            _edPlace.setAdapter(adapter)
+            edPlace.setAdapter(adapter)
         }
     }
 }

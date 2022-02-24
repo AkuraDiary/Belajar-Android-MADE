@@ -3,6 +3,7 @@ package com.example.myreactivesearch
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.activity.viewModels
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     viewModel.queryChannel.send(s.toString())
                 }
+                Log.d("TEXT VIEW ON TEXT CHANGED is POPUP SHOWING : ",edPlace.isPopupShowing.toString())
             }
         })
 
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             val adapter =
                 ArrayAdapter(this@MainActivity, android.R.layout.select_dialog_item, placesName)
             adapter.notifyDataSetChanged()
+
             edPlace.setAdapter(adapter)
         }
     }

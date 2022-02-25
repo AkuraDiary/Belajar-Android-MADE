@@ -23,12 +23,12 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(FavoriteViewModel::class)
-    abstract fun bindHomeViewModel(viewModel: FavoriteViewModel) : ViewModel
+    abstract fun bindFavoriteViewModel(viewModel: FavoriteViewModel) : ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(DetailTourismViewModel::class)
-    abstract fun bindHomeViewModel(viewModel: DetailTourismViewModel) : ViewModel
+    abstract fun bindDetailTourismViewModel(viewModel: DetailTourismViewModel) : ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory : ViewModelFactory) : ViewModelProvider.Factory

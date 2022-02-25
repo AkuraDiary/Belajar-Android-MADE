@@ -1,6 +1,7 @@
 package com.dicoding.tourismapp.di
 
 import androidx.lifecycle.ViewModel
+import dagger.MapKey
 import kotlin.reflect.KClass
 
 @MustBeDocumented
@@ -11,4 +12,5 @@ import kotlin.reflect.KClass
     AnnotationTarget.PROPERTY_GETTER
 )
 
+@MapKey
 annotation class ViewModelKey(val value : KClass<out ViewModel>)

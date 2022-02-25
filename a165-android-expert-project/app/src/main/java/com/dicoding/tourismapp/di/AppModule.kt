@@ -16,7 +16,7 @@ abstract class AppModule{
     @Binds
     abstract fun provideTourismUseCase(tourismInteractor: TourismInteractor) : TourismUseCase
 
-    val useCaseModule = module {
+    /*val useCaseModule = module {
         factory<TourismUseCase> {TourismInteractor(get())}
     }
 
@@ -24,5 +24,5 @@ abstract class AppModule{
         viewModel { HomeViewModel(get()) }
         viewModel { FavoriteViewModel(get()) }
         viewModel { DetailTourismViewModel(get()) }
-    }
+    }*/
 }

@@ -1,7 +1,7 @@
 package com.dicoding.di
 
 import android.content.Context
-import com.dicoding.mysimplelogin.SessionManager
+import com.dicoding.core.SessionManager
 import dagger.Module
 import dagger.Provides
 

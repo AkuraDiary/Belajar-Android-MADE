@@ -1,6 +1,6 @@
 package androidTest.java.com.dicoding.mysimlelogin
 
-import com.dicoding.mysimplelogin.UserRepository
+import com.dicoding.core.UserRepository
 import com.dicoding.mysimplelogin.storageModule
 import org.junit.After
 import org.koin.core.context.loadKoinModules

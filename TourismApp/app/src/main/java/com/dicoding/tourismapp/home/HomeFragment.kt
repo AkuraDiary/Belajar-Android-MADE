@@ -1,5 +1,4 @@
 package com.dicoding.tourismapp.home
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,10 +32,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-
-//            hapus kode berikut
-//            val factory = ViewModelFactory.getInstance(requireActivity())
-//            homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
 
             val tourismAdapter = TourismAdapter()
             tourismAdapter.onItemClick = { selectedData ->

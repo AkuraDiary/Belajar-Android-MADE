@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ITourismRepository {
 
-    fun getAllTourism(): Flow<Resource<List<Tourism>>>
+    fun getAllTourism(): Flow<com.dicoding.tourismapp.core.data.Resource<List<Tourism>>>
 
     fun getFavoriteTourism(): Flow<List<Tourism>>
 

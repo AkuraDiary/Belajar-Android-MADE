@@ -45,8 +45,14 @@ val networkModule = module {
 }
 
 val repositoryModule = module {
-    single { LocalDataSource(get()) }
+    single { com.dicoding.tourismapp.core.data.source.local.LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
     factory { AppExecutors() }
-    single<ITourismRepository> { TourismRepository(get(), get(), get()) }
+    single<ITourismRepository> {
+        com.dicoding.tourismapp.core.data.TourismRepository(
+            get(),
+            get(),
+            get()
+        )
+    }
 }

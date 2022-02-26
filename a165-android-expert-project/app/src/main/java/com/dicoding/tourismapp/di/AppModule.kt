@@ -8,13 +8,14 @@ import com.dicoding.tourismapp.home.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 @Module
-@InstallIn(ViewModelModule::class)
+@InstallIn(ViewModelComponent::class)
 abstract class AppModule{
 
     @Binds

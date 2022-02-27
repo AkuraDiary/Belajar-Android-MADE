@@ -16,7 +16,14 @@
     <application>
         <activity
             android:name=".MapsActivity"
-            android:exported="false" />
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="tourismapp"
+                    android:host="maps"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

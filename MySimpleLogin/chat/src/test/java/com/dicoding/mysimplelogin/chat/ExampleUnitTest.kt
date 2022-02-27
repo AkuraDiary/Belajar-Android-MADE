@@ -1,4 +1,4 @@
-package com.example.mysimplelogin.chat
+package com.dicoding.mysimplelogin.chat
 
 import org.junit.Test
 

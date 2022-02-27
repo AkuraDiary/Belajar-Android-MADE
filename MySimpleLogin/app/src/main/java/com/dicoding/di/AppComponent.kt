@@ -3,6 +3,8 @@ package com.dicoding.di
 import android.content.Context
 import com.dicoding.mysimplelogin.HomeActivity
 import com.dicoding.mysimplelogin.MainActivity
+
+
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -18,4 +20,6 @@ interface AppComponent {
 
     fun inject(activity : MainActivity)
     fun inject(activity: HomeActivity)
+
+
 }

@@ -34,6 +34,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    dynamicFeatures = [':chat']
 }
 
 dependencies {

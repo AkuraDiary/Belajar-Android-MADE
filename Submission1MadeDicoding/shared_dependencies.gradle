@@ -32,7 +32,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_ver"
 
     //Dependency Injection
-    implementation "org.koin:koin-core:$koin_ver"
-    implementation "org.koin:koin-android:$koin_ver"
-    implementation "org.koin:koin-android-viewmodel:$koin_ver"
+    implementation "io.insert-koin:koin-core:$koin_ver"
+    implementation "io.insert-koin:koin-android:$koin_ver"
+    implementation "io.insert-koin:koin-android-viewmodel:$koin_ver"
 }

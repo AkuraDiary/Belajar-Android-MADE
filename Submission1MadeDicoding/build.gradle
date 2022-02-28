@@ -1,10 +1,68 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript{
+
+    ext{
+        //base
+        core_ver = "1.3.2"
+        appcompat_ver = "1.2.0"
+        material_ver = "1.2.1"
+        preference_ver = "1.2.0"
+        junit_ver = "4.13.1"
+        test_junit_ver = "1.1.2"
+        test_espresso_ver = "3.3.0"
+        multidex_ver = "2.0.1"
+
+        //UI and Navigation
+        constraint_layout_ver = "2.0.4"
+        recylcerview_ver = "1.1.0"
+        viewpager2_ver = "1.0.0"
+        cardview_ver = "1.0.0"
+        material_beta_ver = "1.3.0-beta01"
+        appcompat_v7_ver = "27.1.1"
+        glide_ver = "4.11.0"
+
+        navigation_ver = "2.5.0-alpha02"
+
+        //Networking
+        retrofit_ver = "2.9.0"
+        okhttp_ver = "4.9.0"
+        moshi_ver = "1.5.0"
+
+        //Database
+        room_ver = "2.2.6"
+
+        //DI
+        koin_ver = "2.1.6"
+
+        //Coroutine
+        coroutine_ver = "1.3.9"
+
+        //Lifecycle
+        lifecycle_ver = "2.2.0"
+
+
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0-alpha02"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+
 plugins {
     id 'com.android.application' version '7.1.2' apply false
     id 'com.android.library' version '7.1.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
 }
 
+
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+

@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Submission1MadeDicoding"
 include ':app'
+include ':core'

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_name_placeholder">Nama Kos</string>
+    <string name="deskripsi_img_list">Deskripsi</string>
+    <string name="list_layout_kost_desc">Kost Item</string>
+</resources>

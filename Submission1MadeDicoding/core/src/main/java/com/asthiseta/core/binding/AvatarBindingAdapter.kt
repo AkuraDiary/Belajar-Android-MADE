@@ -1,9 +1,9 @@
-package com.asthiseta.submission1madedicoding.binding
+package com.asthiseta.core.binding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.asthiseta.core.R
 import com.asthiseta.core.misc.GlideApp
-import com.asthiseta.submission1madedicoding.R
 import com.bumptech.glide.request.RequestOptions
 
 @BindingAdapter("avatar")

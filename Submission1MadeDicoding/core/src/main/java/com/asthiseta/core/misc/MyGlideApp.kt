@@ -1,4 +1,4 @@
-package com.asthiseta.submission1madedicoding.misc
+package com.asthiseta.core.misc
 
 import android.annotation.SuppressLint
 import android.content.Context

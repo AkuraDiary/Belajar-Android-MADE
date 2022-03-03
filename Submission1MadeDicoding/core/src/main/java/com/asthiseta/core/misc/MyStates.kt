@@ -1,4 +1,4 @@
-package com.asthiseta.submission1madedicoding.misc
+package com.asthiseta.core.misc
 
 enum class MyStates {
     IS_SUCCESS,

@@ -1,4 +1,4 @@
-package com.asthiseta.submission1madedicoding.misc
+package com.asthiseta.core.misc
 
 class ResourceStats<out E>(val states : MyStates, val data : E?, val message : String?) {
     companion object{

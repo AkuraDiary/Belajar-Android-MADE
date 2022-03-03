@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/drawable/ic_unfav.xml" value="0.159" />
         <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/layout/activity_splash_screen.xml" value="0.209375" />
         <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/layout/empty_layout_fragment.xml" value="0.209375" />
+        <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/layout/fragment_detail.xml" value="0.209375" />
+        <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/layout/fragment_favorite.xml" value="0.209375" />
         <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/layout/fragment_home.xml" value="0.209375" />
+        <entry key="..\:/AndroidMade/Submission1MadeDicoding/app/src/main/res/menu/nav_menu_bottom.xml" value="0.5037593984962406" />
         <entry key="..\:/AndroidMade/Submission1MadeDicoding/core/src/main/res/layout/list_item_layout.xml" value="0.209375" />
       </map>
     </option>

@@ -3,4 +3,7 @@
     <string name="txt_wm">Ini Logo</string>
     <string name="empty_data">Empty Data</string>
     <string name="search_placeholderHint">Cari Sesuatu Disini</string>
+    <string name="home_txt">Home</string>
+    <string name="favorite_txt">Favorite</string>
+    <string name="title_favorite">Favorite</string>
 </resources>

@@ -1,4 +1,6 @@
 package com.asthiseta.favorite
 
-class FragmentFavorite {
+import androidx.fragment.app.Fragment
+
+class FragmentFavorite : Fragment() {
 }

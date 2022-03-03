@@ -8,6 +8,6 @@
 
     <item
         android:id="@+id/favorite_destination"
-        android:icon="@drawable/ic_favorite_bottom_nav"
+        android:icon="@drawable/ic_fav"
         android:title="@string/favorite_txt"/>
 </menu>

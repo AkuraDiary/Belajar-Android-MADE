@@ -1,4 +1,6 @@
 package com.asthiseta.submission1madedicoding.detail
 
-class FragmentDetail {
+import androidx.fragment.app.Fragment
+
+class FragmentDetail : Fragment() {
 }

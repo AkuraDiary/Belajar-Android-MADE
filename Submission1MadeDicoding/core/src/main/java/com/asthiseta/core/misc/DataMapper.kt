@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flowOf
 
 
 object DataMapper {
-    fun mapResponseToDomain(input: List<ItemResponse>) : Flow<List<Item>>{
+    fun mapResponsesToDomain(input: List<ItemResponse>) : Flow<List<Item>>{
         val dataArray = ArrayList<Item>()
         input.map{
             val item = Item(
@@ -21,11 +21,30 @@ object DataMapper {
                 it.available_bedrooms,
                 it.total_bedrooms,
                 it.price,
+                false
             )
             dataArray.add(item)
         }
         return flowOf(dataArray)
     }
+
+    fun mapResponseToDomain(input: ItemResponse):Flow<Item>{
+        return flowOf(
+            Item(
+                input._id,
+                input.name,
+                input.description,
+                input.address,
+                input.imageUrl,
+                input.genderRestriction,
+                input.available_bedrooms,
+                input.total_bedrooms,
+                input.price,
+                false
+            )
+        )
+    }
+
     fun mapEntitiesToDomain(input: List<KosEntity>): List<Item> =
         input.map{KosEntity->
             Item(
@@ -37,7 +56,8 @@ object DataMapper {
                 KosEntity.genderRestriction,
                 KosEntity.available_bedrooms,
                 KosEntity.total_bedrooms,
-                KosEntity.price
+                KosEntity.price,
+                false
             )
         }
 
@@ -51,7 +71,8 @@ object DataMapper {
             input?.genderRestriction,
             input?.available_bedrooms,
             input?.total_bedrooms,
-            input?.price
+            input?.price,
+            false
         )
     }
 

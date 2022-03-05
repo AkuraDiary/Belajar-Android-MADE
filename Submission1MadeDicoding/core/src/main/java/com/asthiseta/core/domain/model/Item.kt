@@ -21,5 +21,7 @@ data class Item(
 
     val total_bedrooms : Int?,
 
-    val price : Int?
+    val price : Int?,
+
+    var isFav : Boolean?
 ):Parcelable

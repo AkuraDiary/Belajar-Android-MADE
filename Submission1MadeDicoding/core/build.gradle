@@ -14,6 +14,8 @@ android {
         targetSdk 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL" , '"http://103.176.79.55:8080"')
+
         consumerProguardFiles "consumer-rules.pro"
     }
 

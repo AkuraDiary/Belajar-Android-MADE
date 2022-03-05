@@ -11,26 +11,26 @@ data class KosEntity (
     var id : String?,
 
     @ColumnInfo(name = "name")
-    var name : String,
+    var name : String?,
 
     @ColumnInfo(name = "description")
-    val description : String,
+    val description : String?,
 
     @ColumnInfo(name = "address")
-    val address : String,
+    val address : String?,
 
     @ColumnInfo(name = "imageUrl")
-    val imageUrl: String,
+    val imageUrl: String?,
 
     @ColumnInfo(name = "genderRestriction")
-    val genderRestriction : String,
+    val genderRestriction : String?,
 
     @ColumnInfo(name = "available_bedrooms")
-    val available_bedrooms : Int,
+    val available_bedrooms : Int?,
 
     @ColumnInfo(name = "total_bedrooms")
-    val total_bedrooms : Int,
+    val total_bedrooms : Int?,
 
     @ColumnInfo(name = "price")
-    val price : Int
+    val price : Int?
 )

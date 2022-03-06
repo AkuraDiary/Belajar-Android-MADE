@@ -6,4 +6,5 @@
     <string name="search_placeholderHint">Cari Sesuatu Disini</string>
     <string name="home_txt">Home</string>
     <string name="favorite_txt">Favorite</string>
+    <string name="searchForKos_txt">Cari Kos Disini</string>
 </resources>

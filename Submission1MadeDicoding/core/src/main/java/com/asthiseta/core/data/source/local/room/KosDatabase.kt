@@ -6,5 +6,5 @@ import com.asthiseta.core.data.source.local.entity.KosEntity
 
 @Database(entities = [KosEntity::class],version=1, exportSchema = false)
 abstract class KosDatabase : RoomDatabase(){
-    abstract fun itemDao() : KosDao
+    abstract fun kosDao() : KosDao
 }

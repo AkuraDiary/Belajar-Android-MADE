@@ -85,6 +85,7 @@ object DataMapper {
         input.genderRestriction,
         input.available_bedrooms,
         input.total_bedrooms,
-        input.price
+        input.price,
+        input.isFav
     )
 }

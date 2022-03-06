@@ -32,5 +32,8 @@ data class KosEntity (
     val total_bedrooms : Int?,
 
     @ColumnInfo(name = "price")
-    val price : Int?
+    val price : Int?,
+
+    @ColumnInfo(name = "isFav")
+    val isFav : Boolean?
 )

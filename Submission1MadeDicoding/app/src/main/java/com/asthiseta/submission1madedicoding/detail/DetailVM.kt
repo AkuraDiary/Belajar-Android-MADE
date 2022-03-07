@@ -18,4 +18,6 @@ class DetailVM(private val itemUseCase: ItemUseCase) : ViewModel(){
     fun deleteFav(item : Item) = viewModelScope.launch {
         itemUseCase.deleteItem(item)
     }
+
+    fun getDetailState(name : String) = itemUseCase.getDetailState(name)?.asLiveData()
 }

@@ -14,4 +14,5 @@ interface ItemUseCase {
 
     suspend fun insertItem(item : Item)
     suspend fun deleteItem(item : Item) : Int
+    abstract fun getDetailState(name: String): Flow<Item>
 }

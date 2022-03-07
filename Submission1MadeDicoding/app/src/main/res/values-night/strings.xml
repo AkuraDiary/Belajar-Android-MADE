@@ -7,4 +7,14 @@
     <string name="home_txt">Home</string>
     <string name="favorite_txt">Favorite</string>
     <string name="searchForKos_txt">Cari Kos Disini</string>
+    <string name="deskripsiGambar">gambar kos</string>
+    <string name="name_kos_txt">Nama Kos</string>
+    <string name="favorite">Tambahkan Ke Favorite</string>
+    <string name="txt_alamat">alamat kos</string>
+    <string name="text_deskripsi">Ini Deskripsi Kos</string>
+    <string name="detail_txt">Detail</string>
+    <string name="Gender_txt">Gender Restriction</string>
+    <string name="TotalBeds_txt">Total Bedrooms</string>
+    <string name="availableBeds_txt">Available Bedrooms</string>
+    <string name="price_txt">Price</string>
 </resources>

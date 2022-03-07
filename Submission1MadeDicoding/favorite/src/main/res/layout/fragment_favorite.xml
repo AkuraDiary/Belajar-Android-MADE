@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/errorLayout"
+        android:id="@+id/errorLayoutFav"
         layout="@layout/empty_layout_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerHome"
+        android:id="@+id/recyclerFav"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="visible"

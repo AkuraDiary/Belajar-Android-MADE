@@ -15,8 +15,7 @@ import com.asthiseta.core.data.Resource
 import com.asthiseta.core.ui.ItemAdapter
 import com.asthiseta.di.favoriteModule
 import com.asthiseta.favorite.databinding.FragmentFavoriteBinding
-import com.asthiseta.submission1madedicoding.databinding.FragmentHomeBinding
-import com.asthiseta.submission1madedicoding.misc.ShowStates
+import com.asthiseta.misc.ShowStates
 import org.koin.android.ext.android.getKoin
 import org.koin.android.viewmodel.ViewModelParameter
 import org.koin.android.viewmodel.koin.getViewModel
@@ -24,7 +23,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.parameter.ParametersDefinition
 import org.koin.core.qualifier.Qualifier
 
-class FragmentFavorite : Fragment() , ShowStates{
+class FragmentFavorite : Fragment() , ShowStates {
 
     private lateinit var bindingFav : FragmentFavoriteBinding
     private lateinit var favAdapter : ItemAdapter
@@ -72,15 +71,16 @@ class FragmentFavorite : Fragment() , ShowStates{
         //homeLoading(bindingFav) TODO
     }
 
-    override fun homeLoading(bindingHome: FragmentHomeBinding?) {
+    override fun favLoading(bindingFav: FragmentFavoriteBinding?) {
         TODO("Not yet implemented")
     }
 
-    override fun homeSuccess(bindingHome: FragmentHomeBinding?) {
+    override fun favSuccess(bindingFav: FragmentFavoriteBinding?) {
         TODO("Not yet implemented")
     }
 
-    override fun homeError(bindingHome: FragmentHomeBinding?, message: String?) {
+    override fun favError(bindingFav: FragmentFavoriteBinding?, message: String?) {
         TODO("Not yet implemented")
     }
+
 }

@@ -14,6 +14,8 @@ class ItemInteractor(private val itemRepos: ItemRepos) : ItemUseCase {
         return itemRepos.getDetailKos(name)
     }
 
+    override fun getDetailState(name: String): Flow<Item>? = itemRepos.getDetailState(name)
+
     override fun getFavoriteItem(): Flow<List<Item>> {
         return itemRepos.getFavoriteKos()
     }

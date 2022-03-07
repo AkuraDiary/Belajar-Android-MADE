@@ -13,6 +13,9 @@ interface KosDao {
     @Query("SELECT * from kos_table WHERE name = :name")
     fun getDetails(name : String): Flow<KosEntity>
 
+    @Query("SELECT * from kos_table WHERE name = :name")
+    fun getDetailState(name : String): Flow<KosEntity>?
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(kos : KosEntity?)
 

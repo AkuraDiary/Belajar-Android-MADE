@@ -11,4 +11,5 @@ class LocalDataSource(private val kosDao: KosDao) {
 
     suspend fun insertItem(item : KosEntity) = kosDao.insertItem(item)
     suspend fun deleteItem(item: KosEntity) = kosDao.deleteItem(item)
+    fun getDetailState(name: String): Flow<KosEntity>? = kosDao.getDetailState(name)
 }

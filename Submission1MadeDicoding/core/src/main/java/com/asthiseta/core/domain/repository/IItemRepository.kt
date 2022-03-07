@@ -15,4 +15,5 @@ interface IItemRepository {
     suspend fun insertItem(item : Item)
 
     suspend fun deleteItem(item: Item) : Int
+    fun getDetailState(name: String): Flow<Item>?
 }

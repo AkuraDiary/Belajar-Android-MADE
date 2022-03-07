@@ -54,4 +54,10 @@ class ItemRepos (
         val domainItem = DataMapper.mapDomainToEntity(item)
         return localDataSource.deleteItem(domainItem)
     }
+
+    override fun getDetailState(name: String): Flow<Item>? {
+        return localDataSource.getDetailState(name)?.map{
+            DataMapper.mapEntityToDomain(it)
+        }
+    }
 }

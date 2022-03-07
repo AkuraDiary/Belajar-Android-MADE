@@ -5,9 +5,9 @@ import com.asthiseta.submission1madedicoding.databinding.*
 
 
 interface ShowStates {
-    fun homeLoading(bindingHome : FragmentHomeBinding) : Int? = null
-    fun homeSuccess(bindingHome: FragmentHomeBinding) : Int? = null
-    fun homeError(bindingHome: FragmentHomeBinding, message : String?) : Int? = null
+    fun homeLoading(bindingHome : FragmentHomeBinding? = null) //: Int? = null
+    fun homeSuccess(bindingHome: FragmentHomeBinding? = null) //: Int? = null
+    fun homeError(bindingHome: FragmentHomeBinding? = null, message : String?) //: Int? = null
 
     val gone : Int
         get() = View.GONE

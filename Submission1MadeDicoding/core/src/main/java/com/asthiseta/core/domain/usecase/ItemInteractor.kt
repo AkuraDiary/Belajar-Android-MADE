@@ -3,9 +3,10 @@ package com.asthiseta.core.domain.usecase
 import com.asthiseta.core.data.ItemRepos
 import com.asthiseta.core.data.Resource
 import com.asthiseta.core.domain.model.Item
+import com.asthiseta.core.domain.repository.IItemRepository
 import kotlinx.coroutines.flow.Flow
 
-class ItemInteractor(private val itemRepos: ItemRepos) : ItemUseCase {
+class ItemInteractor(private val itemRepos: IItemRepository) : ItemUseCase {
     override fun getAllKos(query: String?): Flow<Resource<List<Item>>> {
         return itemRepos.getAllKos(query)
     }

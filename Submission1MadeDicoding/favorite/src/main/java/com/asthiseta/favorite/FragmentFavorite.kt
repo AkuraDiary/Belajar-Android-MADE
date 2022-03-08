@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -16,6 +17,7 @@ import com.asthiseta.core.ui.ItemAdapter
 import com.asthiseta.di.favoriteModule
 import com.asthiseta.favorite.databinding.FragmentFavoriteBinding
 import com.asthiseta.misc.ShowStates
+import com.asthiseta.submission1madedicoding.R
 import org.koin.android.ext.android.getKoin
 import org.koin.android.viewmodel.ViewModelParameter
 import org.koin.android.viewmodel.koin.getViewModel
@@ -66,21 +68,48 @@ class FragmentFavorite : Fragment() , ShowStates {
         }
         observeFav()
     }
-
-    private fun observeFav() {
-        //homeLoading(bindingFav) TODO
-    }
-
     override fun favLoading(bindingFav: FragmentFavoriteBinding?) {
-        TODO("Not yet implemented")
+        bindingFav?.apply {
+            errorLayoutFav.mainNotFound.visibility = visible
+            progressBar.apply {
+                trackColor = getColor(context, R.color.orange)
+                visibility = visible
+            }
+            recyclerFav.visibility = visible
+        }
     }
 
     override fun favSuccess(bindingFav: FragmentFavoriteBinding?) {
-        TODO("Not yet implemented")
+        bindingFav?.apply {
+            errorLayoutFav.mainNotFound.visibility = visible
+            //TODO progress
+            recyclerFav.visibility = visible
+        }
     }
 
     override fun favError(bindingFav: FragmentFavoriteBinding?, message: String?) {
-        TODO("Not yet implemented")
+        bindingFav?.apply {
+            errorLayoutFav.apply {
+                mainNotFound.visibility = visible
+                emptyText.text = message ?: resources.getString(R.string.empty_data)
+            }
+            //TODO Progress
+            recyclerFav.visibility = gone
+        }
     }
 
+    private fun observeFav() {
+        favLoading(bindingFav)
+        favoriteVM.favoriteItem.observe(viewLifecycleOwner){
+            it.let {
+                if(!it.isNullOrEmpty()){
+                    favSuccess(bindingFav)
+                    favAdapter.setData(it)
+                }else{
+                    favError(bindingFav,
+                    message = getString(R.string.empty_data))
+                }
+            }
+        }
+    }
 }

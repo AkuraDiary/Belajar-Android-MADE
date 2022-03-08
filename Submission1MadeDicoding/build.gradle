@@ -22,7 +22,7 @@ buildscript{
         appcompat_v7_ver = "27.1.1"
         glide_ver = "4.11.0"
 
-        navigation_ver = "2.5.0-alpha02"
+        navigation_ver = "2.3.2"
 
         //Networking
         retrofit_ver = "2.9.0"

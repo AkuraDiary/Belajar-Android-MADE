@@ -29,10 +29,10 @@ class FragmentHome : Fragment(), ShowStates {
     private lateinit var homeAdapter : ItemAdapter
     private val homeVM : HomeVM by sharedGraphViewModel(R.id.main_navigation)
 
-    private inline fun<reified VM: ViewModel> Fragment.sharedGraphViewModel(
+    private inline fun<reified VM: ViewModel> Fragment.sharedGraphViewModel (
         @IdRes navGraphId: Int,
         qualifier: Qualifier? = null,
-        noinline parameters : ParametersDefinition? = null
+        noinline parameters: ParametersDefinition?= null
     ) = lazy {
         val store = findNavController().getViewModelStoreOwner(navGraphId).viewModelStore
         getKoin().getViewModel(ViewModelParameter(VM::class, qualifier, parameters, store))

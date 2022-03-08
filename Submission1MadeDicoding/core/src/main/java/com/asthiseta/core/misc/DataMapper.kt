@@ -77,7 +77,7 @@ object DataMapper {
     }
 
     fun mapDomainToEntity(input:Item) = KosEntity(
-        input._id,
+        input._id!!,
         input.name,
         input.description,
         input.address,

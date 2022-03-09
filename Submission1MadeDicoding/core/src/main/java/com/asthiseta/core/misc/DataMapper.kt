@@ -28,18 +28,18 @@ object DataMapper {
         return flowOf(dataArray)
     }
 
-    fun mapResponseToDomain(input: ItemResponse):Flow<Item>{
+    fun mapResponseToDomain(input: List<ItemResponse>):Flow<Item>{
         return flowOf(
             Item(
-                input._id,
-                input.name,
-                input.description,
-                input.address,
-                input.imageUrl,
-                input.genderRestriction,
-                input.available_bedrooms,
-                input.total_bedrooms,
-                input.price,
+                input[0]._id,
+                input[0].name,
+                input[0].description,
+                input[0].address,
+                input[0].imageUrl,
+                input[0].genderRestriction,
+                input[0].available_bedrooms,
+                input[0].total_bedrooms,
+                input[0].price,
                 false
             )
         )

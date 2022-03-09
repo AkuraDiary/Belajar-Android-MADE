@@ -2,6 +2,7 @@ package com.asthiseta.core.data.source
 
 import com.asthiseta.core.data.Resource
 import com.asthiseta.core.data.source.remote.network.ApiResponse
+import com.asthiseta.core.data.source.remote.response.ItemResponse
 import kotlinx.coroutines.flow.*
 
 
@@ -22,6 +23,6 @@ abstract class NetworkResources<ResultType, RequestType> {
     }
 
     fun asFlow(): Flow<Resource<ResultType>> = result
-    protected abstract suspend fun createCall():Flow<ApiResponse<RequestType>>
-    protected abstract fun loadFromNetwork(data:RequestType) : Flow<ResultType>
+    protected abstract suspend fun createCall(): Flow<ApiResponse<List<ItemResponse>>>
+    protected abstract fun loadFromNetwork(data: List<ItemResponse>) : Flow<ResultType>
 }

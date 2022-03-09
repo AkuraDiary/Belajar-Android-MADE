@@ -4,6 +4,7 @@ import android.util.Log
 import com.asthiseta.core.data.source.remote.network.ApiResponse
 import com.asthiseta.core.data.source.remote.network.ClientApi
 import com.asthiseta.core.data.source.remote.response.ItemResponse
+import com.asthiseta.core.data.source.remote.response.ListItemResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -27,10 +28,10 @@ class RemoteDataSource(private val clientApi : ClientApi) {
             }
         }.flowOn(Dispatchers.IO)
 
-    suspend fun getItemDetail(name : String): Flow<ApiResponse<ItemResponse>> =
+    suspend fun getItemDetail(name : String): Flow<ApiResponse<List<ItemResponse>>> =
         flow {
             try {
-                val itemDetail = clientApi.searchForItemDetail(name)
+                val itemDetail = clientApi.searchForItemDetail(name).items
                 emit(ApiResponse.IsSuccess(itemDetail))
             }catch (e : Exception){
                 emit(ApiResponse.IsError(e.toString()))

@@ -10,5 +10,5 @@ import com.bumptech.glide.request.RequestOptions
 fun avatar(imageView : ImageView, avatar:String)=
     GlideApp.with(imageView.context)
         .load(avatar)
-        .apply(RequestOptions.circleCropTransform().placeholder(R.drawable.ravioli))
+        .apply(RequestOptions.centerCropTransform().placeholder(R.drawable.ravioli))
         .into(imageView)

@@ -1,33 +1,34 @@
 package com.asthiseta.core.data.source.remote.response
 
-import com.google.gson.annotations.SerializedName
+
+import com.squareup.moshi.Json
 
 data class ItemResponse(
 
-    @field:SerializedName("_id")
+    @field:Json(name = "_id")
     val _id : String,
 
-    @field:SerializedName("name")
+    @field:Json(name = "name")
     val name : String,
 
-    @field:SerializedName("description")
+    @field:Json(name = "description")
     val description : String,
 
-    @field:SerializedName( "address")
+    @field:Json( name="address")
     val address : String,
 
-    @field:SerializedName( "imageUrl")
+    @field:Json(name= "imageUrl")
     val imageUrl: String,
 
-    @field:SerializedName("genderRestriction")
+    @field:Json(name = "genderRestriction")
     val genderRestriction : String,
 
-    @field:SerializedName( "available_bedrooms")
+    @field:Json( name ="available_bedrooms")
     val available_bedrooms : Int,
 
-    @field:SerializedName("total_bedrooms")
+    @field:Json(name= "total_bedrooms")
     val total_bedrooms : Int,
 
-    @field:SerializedName("price")
+    @field:Json(name ="price")
     val price : Int
 )

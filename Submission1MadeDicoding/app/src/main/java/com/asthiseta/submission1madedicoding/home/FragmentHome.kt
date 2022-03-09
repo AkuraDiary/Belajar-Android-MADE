@@ -87,6 +87,7 @@ class FragmentHome : Fragment(), ShowStates {
     override fun homeSuccess(bindingHome: FragmentHomeBinding?){
         bindingHome?.apply {
             errorLayout.mainNotFound.visibility = gone
+            progressBar.visibility = gone
             recyclerHome.visibility = visible
             resources
         }

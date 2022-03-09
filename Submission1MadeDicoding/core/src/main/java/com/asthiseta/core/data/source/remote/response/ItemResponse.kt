@@ -26,10 +26,10 @@ data class ItemResponse(
     @field:Json(name = "genderRestriction")
     val genderRestriction : String,
 
-    @field:Json( name ="available_bedrooms")
+    @field:Json( name ="availableBedrooms")
     val available_bedrooms : Int,
 
-    @field:Json(name= "total_bedrooms")
+    @field:Json(name= "totalBedrooms")
     val total_bedrooms : Int,
 
     @field:Json(name ="price")

@@ -109,7 +109,22 @@
                         tools:text="@string/Gender_txt" />
                 </TableRow>
 
-<!--
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        style="@style/TextSpec.Field"
+                        android:text="@string/availableBeds_txt" />
+
+                    <TextView
+                        android:id="@+id/detail_availableBed"
+                        style="@style/TextSpec.Value"
+                        android:text="@{data.available_bedrooms.toString()}"
+                        tools:text="@string/TotalBeds_txt" />
+                </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,9 +137,10 @@
                     <TextView
                         android:id="@+id/detail_totalBed"
                         style="@style/TextSpec.Value"
-                        android:text="@{data.total_bedrooms}"
+                        android:text="@{data.total_bedrooms.toString()}"
                         tools:text="@string/TotalBeds_txt" />
                 </TableRow>
+
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -138,10 +154,10 @@
                     <TextView
                         android:id="@+id/detail_price"
                         style="@style/TextSpec.Value"
-                        android:text="@{data.price}"
+                        android:text="@{data.price.toString()}"
                         tools:text="@string/price_txt" />
                 </TableRow>
-                -->
+
             </TableLayout>
         </LinearLayout>
 

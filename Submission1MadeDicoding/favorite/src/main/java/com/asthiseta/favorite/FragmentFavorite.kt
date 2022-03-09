@@ -89,12 +89,13 @@ class FragmentFavorite : Fragment() , ShowStates {
 
     override fun favError(bindingFav: FragmentFavoriteBinding?, message: String?) {
         bindingFav?.apply {
+            recyclerFav.visibility = gone
             errorLayoutFav.apply {
                 mainNotFound.visibility = visible
                 emptyText.text = message ?: resources.getString(R.string.empty_data)
             }
             //TODO Progress
-            recyclerFav.visibility = gone
+
         }
     }
 

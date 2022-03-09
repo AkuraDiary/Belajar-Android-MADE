@@ -1,6 +1,5 @@
 package com.asthiseta.core.domain.usecase
 
-import com.asthiseta.core.data.ItemRepos
 import com.asthiseta.core.data.Resource
 import com.asthiseta.core.domain.model.Item
 import com.asthiseta.core.domain.repository.IItemRepository

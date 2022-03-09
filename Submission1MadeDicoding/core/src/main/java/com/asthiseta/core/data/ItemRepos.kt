@@ -29,11 +29,11 @@ class ItemRepos (
 
     override fun getDetailKos(name: String): Flow<Resource<Item>> {
         return object : NetworkResources<Item, ItemResponse>() {
-            override fun loadFromNetwork(data: ItemResponse): Flow<Item> {
+            override fun loadFromNetwork(data: List<ItemResponse>): Flow<Item> {
                 return DataMapper.mapResponseToDomain(data)
             }
 
-            override suspend fun createCall(): Flow<ApiResponse<ItemResponse>> {
+            override suspend fun createCall(): Flow<ApiResponse<List<ItemResponse>>> {
                 return remoteDataSource.getItemDetail(name)
             }
         }.asFlow()

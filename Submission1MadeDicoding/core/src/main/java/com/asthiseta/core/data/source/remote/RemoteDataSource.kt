@@ -1,6 +1,5 @@
 package com.asthiseta.core.data.source.remote
 
-import android.util.Log
 import com.asthiseta.core.data.source.remote.network.ApiResponse
 import com.asthiseta.core.data.source.remote.network.ClientApi
 import com.asthiseta.core.data.source.remote.response.ItemResponse
@@ -15,11 +14,10 @@ class RemoteDataSource(private val clientApi : ClientApi) {
         flow {
             try {
                 val userSearch = clientApi.searchForItem(query)
-                val itemArray = userSearch.items
-                if(itemArray.isNullOrEmpty()){
+                if (userSearch.isNullOrEmpty()) {
                     emit(ApiResponse.IsError(null))
-                }else{
-                    emit(ApiResponse.IsSuccess(itemArray))
+                } else {
+                    emit(ApiResponse.IsSuccess(userSearch))
                 }
             }catch (e : Exception){
                 emit(ApiResponse.IsError(e.toString()))
@@ -27,7 +25,7 @@ class RemoteDataSource(private val clientApi : ClientApi) {
             }
         }.flowOn(Dispatchers.IO)
 
-    suspend fun getItemDetail(name : String): Flow<ApiResponse<ItemResponse>> =
+    suspend fun getItemDetail(name : String): Flow<ApiResponse<List<ItemResponse>>> =
         flow {
             try {
                 val itemDetail = clientApi.searchForItemDetail(name)

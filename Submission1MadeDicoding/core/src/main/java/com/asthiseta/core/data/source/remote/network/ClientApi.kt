@@ -14,11 +14,11 @@ interface ClientApi {
     @GET("kosts")
     suspend fun searchForItem(
         @Query("q")q: String?
-    ): ListItemResponse
+    ): List<ItemResponse>//ListItemResponse
 
    @GET("kosts")
     suspend fun searchForItemDetail(
         @Query("q")q: String?
-    ): ItemResponse
+    ): List<ItemResponse>
 
 }

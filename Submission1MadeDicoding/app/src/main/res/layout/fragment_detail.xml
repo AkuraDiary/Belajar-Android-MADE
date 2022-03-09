@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="data"
             type="com.asthiseta.core.domain.model.Item" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,48 +29,60 @@
 
                 <ImageView
                     android:id="@+id/detail_gambarKos"
-                    app:avatar='@{data.imageUrl ?? ""}'
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="279dp"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/deskripsiGambar"
-                    android:src="@drawable/ravioli" />
+                    android:src="@drawable/ravioli"
+                    app:avatar='@{data.imageUrl ?? ""}' />
+
             </FrameLayout>
 
-            <TextView
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_favorite"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/dark_bg"
+                android:contentDescription="@string/favorite"
+                app:srcCompat="@drawable/ic_unfav" />
+
+            <TextView
                 android:id="@+id/detail_namaKos"
                 style="@style/TextContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@{data.name}"
-                tools:text="@string/name_kos_txt"
-                android:textSize="32sp" />
+                android:textSize="32sp"
+                tools:text="@string/name_kos_txt" />
 
             <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
                 android:id="@+id/detail_alamatKos"
                 style="@style/TextContent.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="@{data.address}"
-                tools:text="@string/txt_alamat"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="@string/txt_alamat" />
 
             <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
                 android:id="@+id/detail_deskripsiKos"
                 style="@style/TextContent"
-                android:textStyle=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:lineSpacingMultiplier="1"
                 android:text="@{data.description}"
+                android:textStyle=""
                 tools:text="@string/text_deskripsi" />
 
             <TextView
-                android:layout_height="wrap_content"
+                style="@style/TextContent"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/detail_txt" />
 
@@ -96,6 +109,7 @@
                         tools:text="@string/Gender_txt" />
                 </TableRow>
 
+<!--
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -127,21 +141,10 @@
                         android:text="@{data.price}"
                         tools:text="@string/price_txt" />
                 </TableRow>
-
+                -->
             </TableLayout>
         </LinearLayout>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/dark_bg"
-            app:srcCompat="@drawable/ic_unfav"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="@string/favorite" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </layout>

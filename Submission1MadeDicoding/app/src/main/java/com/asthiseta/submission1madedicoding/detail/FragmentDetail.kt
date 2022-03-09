@@ -18,7 +18,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class FragmentDetail : Fragment(){
     private lateinit var bindingDetail : FragmentDetailBinding
-    private lateinit var pagerAdapter: PagerAdapter
     private lateinit var item : Item
     private var isFavorite = false
 

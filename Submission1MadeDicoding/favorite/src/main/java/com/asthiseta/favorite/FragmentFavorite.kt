@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.asthiseta.core.data.Resource
 import com.asthiseta.core.ui.ItemAdapter
 import com.asthiseta.di.favoriteModule
 import com.asthiseta.favorite.databinding.FragmentFavoriteBinding
@@ -29,7 +28,7 @@ class FragmentFavorite : Fragment() , ShowStates {
 
     private lateinit var bindingFav : FragmentFavoriteBinding
     private lateinit var favAdapter : ItemAdapter
-    private val favoriteVM : FavoriteVM by sharedGraphViewModel(com.asthiseta.submission1madedicoding.R.id.main_navigation)
+    private val favoriteVM : FavoriteVM by sharedGraphViewModel(R.id.main_navigation)
 
     private inline fun<reified VM : ViewModel> Fragment.sharedGraphViewModel(
         @IdRes navGraphId : Int,
@@ -44,9 +43,9 @@ class FragmentFavorite : Fragment() , ShowStates {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val actionBar = (activity as AppCompatActivity).supportActionBar
-        actionBar?.title = getString(com.asthiseta.submission1madedicoding.R.string.favorite_txt)
+        actionBar?.title = getString(R.string.favorite_txt)
         bindingFav = FragmentFavoriteBinding.inflate(layoutInflater, container, false)
 
         loadKoinModules(favoriteModule)
@@ -89,13 +88,12 @@ class FragmentFavorite : Fragment() , ShowStates {
 
     override fun favError(bindingFav: FragmentFavoriteBinding?, message: String?) {
         bindingFav?.apply {
+            progressBar.visibility = gone
             recyclerFav.visibility = gone
             errorLayoutFav.apply {
                 mainNotFound.visibility = visible
                 emptyText.text = message ?: resources.getString(R.string.empty_data)
             }
-            //TODO Progress
-
         }
     }
 

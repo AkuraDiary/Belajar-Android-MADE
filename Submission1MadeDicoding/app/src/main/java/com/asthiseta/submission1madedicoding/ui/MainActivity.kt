@@ -3,6 +3,7 @@ package com.asthiseta.submission1madedicoding.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -24,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
         setSupportActionBar(activityMainBinding.mainToolbar)
+        activityMainBinding.mainToolbar.setTitleTextColor(ContextCompat.getColor(baseContext, R.color.orange))
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
-        //navController = findNavController(R.id.nav_host)
         NavigationUI.setupWithNavController(activityMainBinding.bottomNav, navController)
 
         appBarConfiguration = AppBarConfiguration(navController.graph)

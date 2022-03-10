@@ -23,13 +23,15 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val logo = splashBinding.logo
         val slideAnim = AnimationUtils.loadAnimation(this, R.anim.splash_anim)
+
         logo.startAnimation(slideAnim)
 
         val background = object :Thread(){
             override fun run() {
                 try {
                     /* simulating some workloads here */
-                    sleep(2500)
+                    sleep(1500)
+
                     /* simulating some workloads here */
 
                     //continue into next activity

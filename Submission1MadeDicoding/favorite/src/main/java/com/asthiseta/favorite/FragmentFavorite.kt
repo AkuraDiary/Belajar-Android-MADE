@@ -82,7 +82,7 @@ class FragmentFavorite : Fragment() , ShowStates {
     override fun favSuccess(bindingFav: FragmentFavoriteBinding?) {
         bindingFav?.apply {
             errorLayoutFav.mainNotFound.visibility = gone
-            //TODO progress
+            progressBar.visibility = gone
             recyclerFav.visibility = visible
         }
     }

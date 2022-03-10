@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <data>
+
         <variable
-            name = "data"
-            type="com.asthiseta.core.domain.model.Item"
-            />
+            name="data"
+            type="com.asthiseta.core.domain.model.Item" />
     </data>
 
 
@@ -17,58 +16,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="12dp"
-        app:cardElevation="8dp"
-        android:layout_marginTop="8dp">
+        app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/list_imageUrl"
+                android:layout_width="106dp"
+                android:layout_height="97dp"
                 android:layout_margin="8dp"
+                android:contentDescription="@string/list_layout_kost_desc"
+                android:scaleType="centerCrop"
+                android:transitionName="imageView_trans"
+                app:avatar="@{data.imageUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.058"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:cardCornerRadius="16dp">
-
-                <ImageView
-                    android:id="@+id/list_imageUrl"
-                    android:layout_width="106dp"
-                    android:layout_height="97dp"
-                    android:contentDescription="@string/list_layout_kost_desc"
-                    android:scaleType="centerCrop"
-                    android:transitionName="imageView_trans"
-                    app:avatar="@{data.imageUrl}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/ravioli" />
-            </androidx.cardview.widget.CardView>
+                tools:srcCompat="@drawable/ravioli" />
 
             <TextView
                 android:id="@+id/list_nama"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="20dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@{data.name}"
-                android:textSize="18sp"
 
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintStart_toEndOf="@+id/list_imageUrl"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.219"
+                app:layout_constraintVertical_bias="0.325"
                 tools:text="@string/main_name_placeholder" />
 
             <TextView
@@ -79,10 +65,10 @@
                 android:text="@{data.description}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.181"
-                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintHorizontal_bias="0.243"
+                app:layout_constraintStart_toEndOf="@+id/list_imageUrl"
                 app:layout_constraintTop_toBottomOf="@+id/list_nama"
-                app:layout_constraintVertical_bias="0.567"
+                app:layout_constraintVertical_bias="0.6"
                 tools:text="@string/deskripsi_img_list" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,5 +37,5 @@ data class KosEntity (
     val price : Int?,
 
     @ColumnInfo(name = "isFav")
-    val isFav : Boolean?
+    var isFav : Boolean?
 )

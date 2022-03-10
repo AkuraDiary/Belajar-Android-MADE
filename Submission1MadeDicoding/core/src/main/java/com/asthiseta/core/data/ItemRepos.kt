@@ -1,5 +1,6 @@
 package com.asthiseta.core.data
 
+import android.util.Log
 import com.asthiseta.core.data.source.NetworkResources
 import com.asthiseta.core.data.source.local.LocalDataSource
 import com.asthiseta.core.data.source.remote.RemoteDataSource
@@ -47,11 +48,15 @@ class ItemRepos (
 
     override suspend fun insertItem(item: Item) {
         val domainItem = DataMapper.mapDomainToEntity(item)
+        Log.d("Item Repos Insert Item : ", domainItem.name.toString())
+        Log.d("Item Repos Insert Item fav : ", domainItem.isFav!!.toString())
         return localDataSource.insertItem(domainItem)
     }
 
     override suspend fun deleteItem(item: Item): Int {
         val domainItem = DataMapper.mapDomainToEntity(item)
+        Log.d("Item Repos Delete Item : ", domainItem.name.toString())
+        Log.d("Item Repos Delete Item fav : ", domainItem.isFav!!.toString())
         return localDataSource.deleteItem(domainItem)
     }
 

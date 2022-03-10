@@ -8,13 +8,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import androidx.viewpager.widget.PagerAdapter
 import com.asthiseta.core.data.Resource
 import com.asthiseta.core.domain.model.Item
 import com.asthiseta.submission1madedicoding.R
 import com.asthiseta.submission1madedicoding.databinding.FragmentDetailBinding
 import com.shashank.sony.fancytoastlib.FancyToast
-
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FragmentDetail : Fragment(){

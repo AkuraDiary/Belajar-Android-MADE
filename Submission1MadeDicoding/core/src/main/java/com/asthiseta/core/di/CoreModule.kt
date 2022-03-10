@@ -8,13 +8,10 @@ import com.asthiseta.core.data.source.local.room.KosDatabase
 import com.asthiseta.core.data.source.remote.RemoteDataSource
 import com.asthiseta.core.data.source.remote.network.ClientApi
 import com.asthiseta.core.domain.repository.IItemRepository
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
-
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 

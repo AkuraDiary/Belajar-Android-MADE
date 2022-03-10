@@ -13,6 +13,7 @@ import com.asthiseta.core.data.Resource
 import com.asthiseta.core.domain.model.Item
 import com.asthiseta.submission1madedicoding.R
 import com.asthiseta.submission1madedicoding.databinding.FragmentDetailBinding
+import com.shashank.sony.fancytoastlib.FancyToast
 
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -50,18 +51,24 @@ class FragmentDetail : Fragment(){
         if(!isFavorite){
             item.isFav = !isFavorite
             detailVM.insertFav(item)
-            // TODO TOAST
-            isFavorite = !isFavorite
+            FancyToast.makeText(
+                context, "Added ${item.name} To Favorite", Toast.LENGTH_SHORT, FancyToast.SUCCESS, false
+            ).show()
+            //isFavorite = !isFavorite
         }else{
             item.isFav = !isFavorite
             detailVM.deleteFav(item)
-            // TODO TOAST
-            isFavorite = !isFavorite
+            FancyToast.makeText(
+                context, "Removed ${item.name} To Favorite", Toast.LENGTH_SHORT, FancyToast.INFO, false
+            ).show()
+            //isFavorite = !isFavorite
         }
+        isFavorite = !isFavorite
     }
 
     private fun observeDetail() {
         detailVM.detailItem(args.name).observe(viewLifecycleOwner) {
+            changeFav(isFavorite)
             when(it){
                 is Resource.Success ->{
                     item = it.data!!
@@ -83,6 +90,7 @@ class FragmentDetail : Fragment(){
             }
             changeFav(isFavorite)
             bindingDetail.fabFavorite.setOnClickListener{
+                //changeFav(isFavorite)
                 addOrRemoveFav()
                 changeFav(isFavorite)
             }

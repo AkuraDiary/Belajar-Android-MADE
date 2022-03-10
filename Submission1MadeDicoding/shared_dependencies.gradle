@@ -35,4 +35,7 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koin_ver"
     implementation "io.insert-koin:koin-android:$koin_ver"
     implementation "io.insert-koin:koin-android-viewmodel:$koin_ver"
+
+    //Fancy Toast
+    implementation 'io.github.shashank02051997:FancyToast:2.0.1'
 }

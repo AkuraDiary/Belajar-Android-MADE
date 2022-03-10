@@ -17,8 +17,8 @@ interface KosDao {
     fun getDetailState(name : String): Flow<KosEntity>?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertItem(kos : KosEntity?)
+    suspend fun insertItem(kos : KosEntity?)
 
     @Delete
-    fun deleteItem(kos : KosEntity) : Int
+    suspend fun deleteItem(kos : KosEntity) : Int
 }

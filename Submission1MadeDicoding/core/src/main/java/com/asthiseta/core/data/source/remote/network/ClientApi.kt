@@ -8,9 +8,6 @@ import retrofit2.http.Query
 interface ClientApi {
 
     @GET("kosts")
-    suspend fun getAllKost() : ListItemResponse
-
-    @GET("kosts")
     suspend fun searchForItem(
         @Query("q")q: String?
     ): List<ItemResponse>//ListItemResponse

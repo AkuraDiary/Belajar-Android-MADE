@@ -57,7 +57,7 @@ class FragmentDetail : Fragment(){
             item.isFav = !isFavorite
             detailVM.deleteFav(item)
             FancyToast.makeText(
-                context, "Removed ${item.name} To Favorite", Toast.LENGTH_SHORT, FancyToast.INFO, false
+                context, "Removed ${item.name} from Favorite", Toast.LENGTH_SHORT, FancyToast.INFO, false
             ).show()
             //isFavorite = !isFavorite
         }

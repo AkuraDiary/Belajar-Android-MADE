@@ -1,6 +1,7 @@
 package com.asthiseta.submission1madedicoding.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +62,7 @@ class FragmentDetail : Fragment(){
             ).show()
             //isFavorite = !isFavorite
         }
-        isFavorite = !isFavorite
+        isFavorite = item.isFav!!//!isFavorite
     }
 
     private fun observeDetail() {
@@ -71,11 +72,19 @@ class FragmentDetail : Fragment(){
                 is Resource.Success ->{
                     item = it.data!!
                     bindingDetail.data = it.data
-                    detailVM.getDetailState(args.name)?.observe(viewLifecycleOwner) { item ->
-                        isFavorite = item.isFav == true
+                    detailVM.detailItem(args.name).observe(viewLifecycleOwner) { item ->
+                        isFavorite = item.data?.isFav == true
                         changeFav(isFavorite)
                     }
+
                     bindingDetail.fabFavorite.show()
+                    bindingDetail.fabFavorite.setOnClickListener{
+                        Log.d("Fragment Detail FAB click Listener before addOrRemoveFav", isFavorite.toString())
+                        //changeFav(isFavorite)
+                        addOrRemoveFav()
+                        changeFav(isFavorite)
+                        Log.d("Fragment Detail FAB click Listener after addOrRemoveFav", isFavorite.toString())
+                    }
                 }
 
                 is Resource.Error -> {
@@ -86,12 +95,12 @@ class FragmentDetail : Fragment(){
                     bindingDetail.fabFavorite.hide()
                 }
             }
-            changeFav(isFavorite)
+            /*changeFav(isFavorite)
             bindingDetail.fabFavorite.setOnClickListener{
                 //changeFav(isFavorite)
                 addOrRemoveFav()
                 changeFav(isFavorite)
-            }
+            }*/
         }
     }
 }

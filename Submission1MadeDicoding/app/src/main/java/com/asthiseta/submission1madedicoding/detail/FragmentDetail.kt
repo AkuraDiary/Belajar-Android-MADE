@@ -67,19 +67,21 @@ class FragmentDetail : Fragment(){
 
     private fun observeDetail() {
         detailVM.detailItem(args.name).observe(viewLifecycleOwner) {
-
             when(it){
                 is Resource.Success ->{
                     item = it.data!!
+
                     bindingDetail.data = it.data
 
                     Log.d("Fragment Detail when success isFavorite : ", isFavorite.toString())
                     Log.d("Fragment Detail when success item.isFav : ", item.isFav.toString())
-                    detailVM.detailItem(args.name).observe(viewLifecycleOwner) { _item ->
-                        isFavorite = _item.data?.isFav == true
-                        Log.d("Fragment Detail inside observe item.isFav : ", item.isFav.toString())
-                        Log.d("Fragment Detail inside observe _item.data.isFav : ", _item.data?.isFav.toString())
-                        Log.d("Fragment Detail inside observe isFavorite : ", isFavorite.toString())
+
+                    detailVM.getDetailState(args.name)?.observe(viewLifecycleOwner) { _item ->
+                        isFavorite = _item.isFav == true
+
+                        Log.d("Fragment Detail inside getDetailState observe item.isFav : ", item.isFav.toString())
+                        Log.d("Fragment Detail inside getDetailState observe _item.data.isFav : ", _item.isFav.toString())
+                        Log.d("Fragment Detail inside getDetailState observe isFavorite : ", isFavorite.toString())
                         changeFav(isFavorite)
                     }
 

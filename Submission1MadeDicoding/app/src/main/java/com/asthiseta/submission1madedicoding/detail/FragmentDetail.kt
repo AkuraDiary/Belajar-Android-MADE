@@ -53,31 +53,38 @@ class FragmentDetail : Fragment(){
             FancyToast.makeText(
                 context, "Added ${item.name} To Favorite", Toast.LENGTH_SHORT, FancyToast.SUCCESS, false
             ).show()
-            //isFavorite = !isFavorite
+
         }else{
             item.isFav = !isFavorite
             detailVM.deleteFav(item)
             FancyToast.makeText(
                 context, "Removed ${item.name} from Favorite", Toast.LENGTH_SHORT, FancyToast.INFO, false
             ).show()
-            //isFavorite = !isFavorite
+
         }
-        isFavorite = item.isFav!!//!isFavorite
+        isFavorite = item.isFav!!
     }
 
     private fun observeDetail() {
         detailVM.detailItem(args.name).observe(viewLifecycleOwner) {
-            changeFav(isFavorite)
+
             when(it){
                 is Resource.Success ->{
                     item = it.data!!
                     bindingDetail.data = it.data
-                    detailVM.detailItem(args.name).observe(viewLifecycleOwner) { item ->
-                        isFavorite = item.data?.isFav == true
+
+                    Log.d("Fragment Detail when success isFavorite : ", isFavorite.toString())
+                    Log.d("Fragment Detail when success item.isFav : ", item.isFav.toString())
+                    detailVM.detailItem(args.name).observe(viewLifecycleOwner) { _item ->
+                        isFavorite = _item.data?.isFav == true
+                        Log.d("Fragment Detail inside observe item.isFav : ", item.isFav.toString())
+                        Log.d("Fragment Detail inside observe _item.data.isFav : ", _item.data?.isFav.toString())
+                        Log.d("Fragment Detail inside observe isFavorite : ", isFavorite.toString())
                         changeFav(isFavorite)
                     }
 
                     bindingDetail.fabFavorite.show()
+                    changeFav(isFavorite)
                     bindingDetail.fabFavorite.setOnClickListener{
                         Log.d("Fragment Detail FAB click Listener before addOrRemoveFav", isFavorite.toString())
                         //changeFav(isFavorite)

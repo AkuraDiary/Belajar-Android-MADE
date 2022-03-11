@@ -1,5 +1,6 @@
 package com.asthiseta.core.ui
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,8 @@ RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
             fun bind(item : Item, click : (String, View)-> Unit){
                 binding.apply {
                     data = item
+                    Log.d("Item Adapter data binding isFav value : ", item.isFav.toString())
+
                     root.transitionName = item.name
                     root.setOnClickListener { item.name?.let { it1 -> click(it1, root) } }
                 }

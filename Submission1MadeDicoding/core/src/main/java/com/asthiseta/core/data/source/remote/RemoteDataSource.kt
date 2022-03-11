@@ -21,7 +21,7 @@ class RemoteDataSource(private val clientApi : ClientApi) {
                 }
             }catch (e : Exception){
                 emit(ApiResponse.IsError(e.toString()))
-                //Log.e(RemoteDataSource::class.java.simpleName, e.localizedMessage)
+
             }
         }.flowOn(Dispatchers.IO)
 

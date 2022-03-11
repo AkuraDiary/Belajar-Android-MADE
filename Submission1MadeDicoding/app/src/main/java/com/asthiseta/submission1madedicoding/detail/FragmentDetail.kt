@@ -73,26 +73,20 @@ class FragmentDetail : Fragment(){
 
                     bindingDetail.data = it.data
 
-                    Log.d("Fragment Detail when success isFavorite : ", isFavorite.toString())
-                    Log.d("Fragment Detail when success item.isFav : ", item.isFav.toString())
-
                     detailVM.getDetailState(args.name)?.observe(viewLifecycleOwner) { _item ->
                         isFavorite = _item.isFav == true
 
-                        Log.d("Fragment Detail inside getDetailState observe item.isFav : ", item.isFav.toString())
-                        Log.d("Fragment Detail inside getDetailState observe _item.data.isFav : ", _item.isFav.toString())
-                        Log.d("Fragment Detail inside getDetailState observe isFavorite : ", isFavorite.toString())
                         changeFav(isFavorite)
                     }
 
                     bindingDetail.fabFavorite.show()
                     changeFav(isFavorite)
                     bindingDetail.fabFavorite.setOnClickListener{
-                        Log.d("Fragment Detail FAB click Listener before addOrRemoveFav", isFavorite.toString())
-                        //changeFav(isFavorite)
+
+
                         addOrRemoveFav()
                         changeFav(isFavorite)
-                        Log.d("Fragment Detail FAB click Listener after addOrRemoveFav", isFavorite.toString())
+
                     }
                 }
 
@@ -104,12 +98,6 @@ class FragmentDetail : Fragment(){
                     bindingDetail.fabFavorite.hide()
                 }
             }
-            /*changeFav(isFavorite)
-            bindingDetail.fabFavorite.setOnClickListener{
-                //changeFav(isFavorite)
-                addOrRemoveFav()
-                changeFav(isFavorite)
-            }*/
         }
     }
 }

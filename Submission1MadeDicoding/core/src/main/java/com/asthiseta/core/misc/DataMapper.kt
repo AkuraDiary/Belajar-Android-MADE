@@ -57,7 +57,7 @@ object DataMapper {
                 KosEntity.available_bedrooms,
                 KosEntity.total_bedrooms,
                 KosEntity.price,
-                false
+                KosEntity.isFav
             )
         }
 
@@ -72,7 +72,7 @@ object DataMapper {
             input?.available_bedrooms,
             input?.total_bedrooms,
             input?.price,
-            false
+            input?.isFav
         )
     }
 

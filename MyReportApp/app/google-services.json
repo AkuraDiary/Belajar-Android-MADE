@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "494554227417",
+    "project_id": "myreportapp-2cd64",
+    "storage_bucket": "myreportapp-2cd64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494554227417:android:f91f814905b826da0a14c8",
+        "android_client_info": {
+          "package_name": "com.smktelkom.myreportapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494554227417-dmh8li7vt51ujhrvk1qbbih1d2irhqhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNs6gZMgmk7PbVAJOx3oGTydR13jIv-64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494554227417-dmh8li7vt51ujhrvk1qbbih1d2irhqhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,8 +15,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnCrash = findViewById<Button>(R.id.btn_crash)
+
         // Obtain the FirebaseAnalytics instance.
         analytics = Firebase.analytics
+
         btnCrash.setOnClickListener{
             throw RuntimeException("Test Crash")
         }

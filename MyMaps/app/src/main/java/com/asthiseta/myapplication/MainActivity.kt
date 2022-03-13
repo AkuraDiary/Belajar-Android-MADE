@@ -57,7 +57,21 @@ class MainActivity : AppCompatActivity() {
 
                 showDicodingSpace()
                 showMyLocation(style)
+                addMarkerOnClick()
             }
+        }
+    }
+
+    private fun addMarkerOnClick() {
+        mapboxMap.addOnMapClickListener {point ->
+            symbolManager.deleteAll()
+            symbolManager.create(
+                SymbolOptions()
+                    .withLatLng(LatLng(point.latitude, point.longitude))
+                    .withIconImage(ICON_ID)
+                    .withDraggable(true)
+            )
+            true
         }
     }
 

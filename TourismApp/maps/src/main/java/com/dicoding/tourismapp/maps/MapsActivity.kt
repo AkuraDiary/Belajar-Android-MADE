@@ -33,10 +33,10 @@ class MapsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         Mapbox.getInstance(this, getString(R.string.mapbox_acces_token))
+        binding = ActivityMapsBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
         loadKoinModules(mapsModule) //load the Koin module
 
         supportActionBar?.title = "Tourism Map"

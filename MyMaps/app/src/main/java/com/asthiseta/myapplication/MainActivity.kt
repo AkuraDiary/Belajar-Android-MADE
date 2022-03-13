@@ -1,13 +1,24 @@
 package com.asthiseta.myapplication
 
+import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.animation.BounceInterpolator
 import android.widget.Button
+import android.widget.Toast
+import com.mapbox.android.core.permissions.PermissionsListener
+import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.location.LocationComponent
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
+import com.mapbox.mapboxsdk.location.LocationComponentOptions
+import com.mapbox.mapboxsdk.location.modes.CameraMode
+import com.mapbox.mapboxsdk.location.modes.RenderMode
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
@@ -20,6 +31,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnNavigation : Button
     private lateinit var mapboxMap : MapboxMap
     private lateinit var symbolManager: SymbolManager
+    private lateinit var myLocation : LatLng
+    private lateinit var permissionsManager: PermissionsManager
+    private lateinit var locationComponent : LocationComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,9 +56,50 @@ class MainActivity : AppCompatActivity() {
                 )
 
                 showDicodingSpace()
+                showMyLocation(style)
             }
         }
     }
+
+    @SuppressLint("MissingPermission")
+    private fun showMyLocation(style: Style) {
+        if (PermissionsManager.areLocationPermissionsGranted(this)) {
+            val locationComponentOptions = LocationComponentOptions.builder(this)
+                .pulseEnabled(true)
+                .pulseColor(Color.BLUE)
+                .pulseAlpha(.4f)
+                .pulseInterpolator(BounceInterpolator())
+                .build()
+            val locationComponentActivationOptions = LocationComponentActivationOptions
+                .builder(this, style)
+                .locationComponentOptions(locationComponentOptions)
+                .build()
+            locationComponent = mapboxMap.locationComponent
+            locationComponent.activateLocationComponent(locationComponentActivationOptions)
+            locationComponent.isLocationComponentEnabled = true
+            locationComponent.cameraMode = CameraMode.TRACKING
+            locationComponent.renderMode = RenderMode.COMPASS
+            myLocation = LatLng(locationComponent.lastKnownLocation?.latitude as Double, locationComponent.lastKnownLocation?.longitude as Double)
+            mapboxMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 12.0))
+        } else {
+            permissionsManager = PermissionsManager(object : PermissionsListener {
+                override fun onExplanationNeeded(permissionsToExplain: MutableList<String>?) {
+                    Toast.makeText(this@MainActivity, "Anda harus mengizinkan location permission untuk menggunakan aplikasi ini", Toast.LENGTH_SHORT).show()
+                }
+                override fun onPermissionResult(granted: Boolean) {
+                    if (granted) {
+                        mapboxMap.getStyle { style ->
+                            showMyLocation(style)
+                        }
+                    } else {
+                        finish()
+                    }
+                }
+            })
+            permissionsManager.requestLocationPermissions(this)
+        }
+    }
+
 
     private fun showDicodingSpace() {
         val dicodingSpace = LatLng(-6.8957643, 107.6338462)

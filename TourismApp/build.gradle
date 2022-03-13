@@ -27,11 +27,16 @@ buildscript {
     ext.koin_version = "2.1.6"
 
     ext.lottie_version = "3.4.1"
-    ext.shimmer_version = "0.5.0"
+    ext.shimmer_version = "0.5.0"\
+
+    ext.mapbox_version = "9.2.0"
+    ext.mapbox_annotation_version = "0.8.0"
 
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://mapbox.bintray.com/mapbox' }
         
     }
     dependencies {

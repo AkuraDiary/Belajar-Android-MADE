@@ -36,7 +36,6 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
-        maven { url 'https://mapbox.bintray.com/mapbox' }
         
     }
     dependencies {
@@ -52,6 +51,18 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven {
+            // url 'https://api.mapbox.com/downloads/v1/navigation/android/maven' // old one
+            url 'https://api.mapbox.com/downloads/v2/releases/maven' // new one
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = "mapbox" // This should always be `mapbox` (not your username).
+                password = "pk.eyJ1IjoiYXN0aGlzZXRhIiwiYSI6ImNreng1MWlydTA1ZTUydnM0ZXFkNXR0NDQifQ.wDH38yRXI_tAC91kQpVA1g"
+            }
+        }
         
     }
 }

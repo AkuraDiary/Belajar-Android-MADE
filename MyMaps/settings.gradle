@@ -2,16 +2,28 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+        jcenter()
         mavenCentral()
-        maven { url 'https://mapbox.bintray.com/mapbox' }
+
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        jcenter()
         mavenCentral()
-        maven { url 'https://mapbox.bintray.com/mapbox' }
+        maven {
+            // url 'https://api.mapbox.com/downloads/v1/navigation/android/maven' // old one
+            url 'https://api.mapbox.com/downloads/v2/releases/maven' // new one
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = "mapbox" // This should always be `mapbox` (not your username).
+                password = "sk.eyJ1IjoiYXN0aGlzZXRhIiwiYSI6ImNsMG9rNzFobzFwMXozYm05dzFnczUxMXYifQ.xqfB5eVhlO1RmWPG6ZeRcQ"
+            }
+        }
     }
 }
 rootProject.name = "MyMaps"

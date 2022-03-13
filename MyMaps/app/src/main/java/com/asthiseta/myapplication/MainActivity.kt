@@ -6,11 +6,15 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import android.view.animation.BounceInterpolator
 import android.widget.Button
 import android.widget.Toast
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.api.directions.v5.models.DirectionsResponse
+import com.mapbox.api.directions.v5.models.DirectionsRoute
+import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
@@ -24,6 +28,11 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
+import com.mapbox.services.android.navigation.ui.v5.NavigationLauncher
+import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions
+import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute
+import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
+import java.net.NoRouteToHostException
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myLocation : LatLng
     private lateinit var permissionsManager: PermissionsManager
     private lateinit var locationComponent : LocationComponent
+    private lateinit var navigationMapRoute : NavigationMapRoute
+    private var currentRoute: DirectionsRoute? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +66,67 @@ class MainActivity : AppCompatActivity() {
                     BitmapFactory.decodeResource(resources, com.mapbox.mapboxsdk.R.drawable.mapbox_marker_icon_default)
                 )
 
+                navigationMapRoute = NavigationMapRoute(
+                    null,
+                    mapView,
+                    mapboxMap,
+                    com.mapbox.services.android.navigation.ui.v5.R.style.NavigationMapRoute
+                )
+
                 showDicodingSpace()
                 showMyLocation(style)
                 addMarkerOnClick()
+                showNavigation()
             }
+        }
+    }
+
+    private fun requestRoute(origin: Point, destination: Point) {
+        navigationMapRoute.updateRouteVisibilityTo(false)
+        NavigationRoute.builder(this)
+            .accessToken(getString(R.string.mapbox_acces_token))
+            .origin(origin)
+            .destination(destination)
+            .build()
+            .getRoute(object : retrofit2.Callback<DirectionsResponse> {
+                override fun onResponse(
+                    call: retrofit2.Call<DirectionsResponse>,
+                    response: retrofit2.Response<DirectionsResponse>
+                ) {
+                    if (response.body() == null) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "No routes found, make sure you set the right user and access token.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return
+                    } else if (response.body()?.routes()?.size == 0) {
+                        Toast.makeText(this@MainActivity, "No routes found.", Toast.LENGTH_SHORT)
+                            .show()
+                        return
+                    }
+
+                    currentRoute = response.body()?.routes()?.get(0)
+
+                    navigationMapRoute.addRoute(currentRoute)
+                }
+
+                override fun onFailure(call: retrofit2.Call<DirectionsResponse>, t: Throwable) {
+                    Toast.makeText(this@MainActivity, "Error : $t", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    private fun showNavigation() {
+        btnNavigation.setOnClickListener{
+            val simulateRoute = true
+
+            val options = NavigationLauncherOptions.builder()
+                .directionsRoute(currentRoute)
+                .shouldSimulateRoute(simulateRoute)
+                .build()
+
+            NavigationLauncher.startNavigation(this, options)
         }
     }
 
@@ -71,6 +139,11 @@ class MainActivity : AppCompatActivity() {
                     .withIconImage(ICON_ID)
                     .withDraggable(true)
             )
+            val destination = Point.fromLngLat(point.longitude, point.latitude)
+            val origin = Point.fromLngLat(myLocation.longitude, myLocation.latitude)
+            requestRoute(origin, destination)
+
+            btnNavigation.visibility = View.VISIBLE
             true
         }
     }
@@ -124,7 +197,7 @@ class MainActivity : AppCompatActivity() {
                 .withIconSize(1.5f)
                 .withIconOffset(arrayOf(0f, -1.5f))
                 .withTextField("Dicoding Space")
-                .withTextHaloColor("rgba(255, 255, 255, 100)")
+                .withTextHaloColor("rgba(255, 105, 255, 100)")
                 .withTextHaloWidth(0.5f)
                 .withTextAnchor("top")
                 .withDraggable(true)

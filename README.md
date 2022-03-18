@@ -1,4 +1,5 @@
 # Belajar-Android-MADE
 Repository untuk kumpulan projek / latihan untuk android kelas MADE di dicoding, Alhamdulillah
 
-submission 2 can be found [here](https://github.com/AkuraDiary/Submission2MadeDicoding)
+Submission 1 can be found [here](https://github.com/AkuraDiary/Belajar-Android-MADE/tree/main/Submission1MadeDicoding)
+Submission 2 can be found [here](https://github.com/AkuraDiary/Submission2MadeDicoding)
